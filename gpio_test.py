@@ -14,3 +14,6 @@ if __name__ == "__main__":
     GPIO.output(GPIO_LED, GPIO.HIGH)
     time.sleep(3)
     GPIO.output(GPIO_LED, GPIO.LOW)
+    
+    GPIO.cleanup()
+    sys.exit(0)
