@@ -5,7 +5,7 @@ import sys
 import time
 import RPi.GPIO as GPIO
 
-GPIO_LED = 4
+GPIO_BUTTON = 4
 
 def signal_handler(sig, frame):
     GPIO.cleanup()
@@ -19,9 +19,9 @@ if __name__ == "__main__":
     GPIO.setmode(GPIO.BCM)
 
     #Set up pin modes
-    GPIO.setup(GPIO_LED, GPIO.OUT, pull_up_down = GPIO.PUD_UP)
+    GPIO.setup(GPIO_BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-    GPIO.add_event_detect(BUTTON_GPIO, GPIO.FALLING, callback=button_callback, bouncetime=100)
+    GPIO.add_event_detect(GPIO_BUTTON, GPIO.FALLING, callback=button_callback, bouncetime=100)
 
     signal.signal(signal.SIGINT, signal_handler)
     signal.pause()
